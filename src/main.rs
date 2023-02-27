@@ -12,7 +12,10 @@ fn main() {
         println!("ur guess _>");
         let mut user_input:String = String::new();
         io::stdin().read_line(&mut user_input).expect("Err reading your input");
-        let user_input:usize = user_input.trim().parse().expect("Err converting ur input");
+        let user_input:usize = match user_input.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue
+        };
 
         let results = g_1.check(user_input);
         println!("Results are: {}, {}",results.0,results.1);
