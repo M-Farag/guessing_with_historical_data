@@ -18,6 +18,11 @@ fn main() {
         };
 
         let results = g_1.check(user_input);
-        println!("Results are: {}, {}",results.0,results.1);
+        
+        if results.0 {
+            println!("{}",results.1);
+            break 'app_main_loop;
+        }
+        println!("{}",results.1);
     }
 }
