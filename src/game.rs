@@ -1,4 +1,5 @@
 use rand::Rng;
+use std::cmp::Ordering;
 
 #[derive(Debug)]
 pub struct Guess {
@@ -17,6 +18,22 @@ impl Guess {
         }
     }
 
-    
+    pub fn check(&self,user_input:usize) -> (bool, &str)
+    {
+        let results = match user_input.cmp(&self.machine_code) {
+          Ordering::Equal => {
+            (true,"You win")
+          },
+          Ordering::Less => {
+            (false,"Your guess is too low, please try again")
+          },
+          Ordering::Greater => {
+            (false,"Your guess is too high, please try again")
+          }  
+        };
+
+        results
+    }
+
 
 }
