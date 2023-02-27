@@ -21,6 +21,8 @@ fn main() {
         
         if results.0 {
             println!("{}",results.1);
+
+            println!("You tried it for {:#?} time(s) & Your historical inputs are {:#?}",g_1.attempts_counter,g_1.historical_inputs);
             break 'app_main_loop;
         }
         println!("{}",results.1);

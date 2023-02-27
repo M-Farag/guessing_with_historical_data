@@ -18,7 +18,7 @@ impl Guess {
         }
     }
 
-    pub fn check(&self,user_input:usize) -> (bool, &str)
+    pub fn check(&mut self,user_input:usize) -> (bool, &str)
     {
         let results = match user_input.cmp(&self.machine_code) {
           Ordering::Equal => {
@@ -32,8 +32,17 @@ impl Guess {
           }  
         };
 
+        self.log_input(user_input);
+
         results
     }
+
+    fn log_input(&mut self, user_input:usize) -> ()
+    {
+        self.historical_inputs.push(user_input);
+        self.attempts_counter += 1;
+    }
+    
 
 
 }
