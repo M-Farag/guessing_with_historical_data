@@ -37,6 +37,14 @@ impl Guess {
         results
     }
 
+    pub fn reset(&mut self) -> ()
+    {
+      self.attempts_counter = 0;
+      self.historical_inputs = Vec::new();
+      self.machine_code = rand::thread_rng().gen_range(1..=100);
+    }
+
+    // Private functions
     fn log_input(&mut self, user_input:usize) -> ()
     {
         self.historical_inputs.push(user_input);
